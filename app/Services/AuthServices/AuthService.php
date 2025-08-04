@@ -27,7 +27,7 @@ class AuthService implements AuthManager {
             'user' => $user
         ];
 
-        // $dataResponse['user'] = $user->fresh('UserInfo');
+        $dataResponse['user'] = $user->fresh('UserInfo');
         return $dataResponse;
     }
     
@@ -37,7 +37,7 @@ class AuthService implements AuthManager {
             'password' => bcrypt($data['password']),
         ]);
 
-        // $user->userInfo()->create($data);
+        $user->userInfo()->create($data);
 
         $token = $user->createToken('api-token')->plainTextToken;
         $dataResponse = [

@@ -23,15 +23,29 @@ class AuthRequest extends FormRequest
     {
         $routeName = $this->route()->getName();
         return match($routeName){
-            'auth.login', 'auth.register' => $this->getAuthRules(),
+            'auth.login' => $this->getAuthRules(),
+            'auth.register' => $this->getRegisterRules(),
             default => [],
         };
     }
 
     private function getAuthRules(): array{
         return [
-            'email' => ['email', 'required'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'string']
         ];
+    }
+
+    private function getRegisterRules(){
+        return [
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string', 'min:6'],
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+            'gender' => ['required', 'in:male,female,other'],
+            'address' => ['required', 'string'],
+            'birth_date' => ['required', 'date', 'before:today'],
+            'contact_num' =>  ['required', 'string', 'regex:/^[0-9]{10,15}$/'],
+        ]
     }
 }
