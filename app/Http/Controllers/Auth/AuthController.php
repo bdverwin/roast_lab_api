@@ -32,4 +32,14 @@ class AuthController extends Controller
 
         return response()->json(['data' => $user]);
     }
+
+    public function getUserDetails(Request $request){
+        $dataResponse = [
+            "user" => $request->user()
+        ];
+
+        $dataResponse['user'] = $request->user()->fresh('userInfo');
+        
+        return $dataResponse;
+    }
 }

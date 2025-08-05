@@ -10,4 +10,5 @@ Route::post('/register', [AuthController::class, 'register'])->name('auth.regist
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/getUser', [AuthController::class, 'getUserDetails']);
 });

@@ -46,6 +46,6 @@ class AuthRequest extends FormRequest
             'address' => ['required', 'string'],
             'birth_date' => ['required', 'date', 'before:today'],
             'contact_num' =>  ['required', 'string', 'regex:/^[0-9]{10,15}$/'],
-        ]
+        ];
     }
 }

@@ -45,7 +45,7 @@ class AuthService implements AuthManager {
             'user' => $user
         ];
 
-        // $dataResponse['user'] = $user->fresh('userInfo');
+        $dataResponse['user'] = $user->fresh('userInfo');
 
         return $dataResponse;
     }
