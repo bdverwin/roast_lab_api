@@ -16,9 +16,13 @@ class AuthController extends Controller
     }
 
     public function login(AuthRequest $request){
-        $user = $this->authManager->login($request->validated());
+        $response = $this->authManager->login($request->validated());
 
-        return response()->json(['data' => $user]);
+        if ($response instanceof \Illuminate\Http\JsonResponse) {
+            return $response;
+        }
+
+        return response()->json(['data' => $response]);
     }
 
     public function register(AuthRequest $request){

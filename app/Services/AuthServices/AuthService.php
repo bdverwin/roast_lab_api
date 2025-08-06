@@ -15,10 +15,9 @@ class AuthService implements AuthManager {
 
         $hasCorrectCredentials = $user && Hash::check($data['password'], $user->password);
         if(! $hasCorrectCredentials){
-            return [
-                'message' => 'Invalid credentials'
-            ];
-
+            return response()->json([
+                'message' => 'Invalid credentials',
+            ], 422);
         }
 
         $token = $user->createToken('api-token')->plainTextToken;
