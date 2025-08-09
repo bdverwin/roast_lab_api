@@ -31,6 +31,12 @@ class AuthController extends Controller
         return response()->json(['data' => $user]);
     }
 
+    public function update(AuthRequest $request){
+        $response = $this->authManager->updateUser($request->validated(), $request->user()->id);
+        
+        return response()->json(['message' => $response]);
+    }
+
     public function logout(Request $request){
         $user = $this->authManager->logout($request->user());
 

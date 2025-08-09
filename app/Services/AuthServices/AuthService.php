@@ -6,6 +6,7 @@ use App\Services\AuthServices\AuthManager;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Arr;
 
 
 class AuthService implements AuthManager {
@@ -47,6 +48,16 @@ class AuthService implements AuthManager {
         $dataResponse['user'] = $user->fresh('userInfo');
 
         return $dataResponse;
+    }
+
+    public function updateUser(array $data, int $id){
+        $user = User::findOrFail($id);
+
+        $user->update($data);
+        
+        $user->userInfo()->update(Arr::except($data, ['email']));
+
+        return 'User updated successfully.';
     }
 
     public function logout($user){

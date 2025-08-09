@@ -26,6 +26,7 @@ class AuthRequest extends FormRequest
         return match($routeName){
             'auth.login' => $this->getAuthRules(),
             'auth.register' => $this->getRegisterRules(),
+            'auth.update' => $this->getUpdateRules(),
             default => [],
         };
     }
@@ -41,6 +42,18 @@ class AuthRequest extends FormRequest
         return [
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'confirmed', 'max:100', Password::min(8)->mixedCase()->numbers()],
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+            'gender' => ['required', 'in:male,female,other'],
+            'address' => ['required', 'string'],
+            'birth_date' => ['required', 'date', 'before:today'],
+            'contact_num' =>  ['required', 'string', 'regex:/^[0-9]{10,15}$/'],
+        ];
+    }
+
+    private function getUpdateRules(){
+        return [
+            'email' => ['required', 'email'],
             'first_name' => ['required', 'string'],
             'last_name' => ['required', 'string'],
             'gender' => ['required', 'in:male,female,other'],
