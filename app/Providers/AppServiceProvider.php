@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Services\AuthServices\AuthManager;
 use App\Services\AuthServices\AuthService;
+use App\Services\ProductService;
+use App\Services\ProductServiceIml;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(AuthManager::class, AuthService::class);
+        $this->app->bind(ProductService::class, ProductServiceIml::class);
     }
 
     /**
