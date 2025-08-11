@@ -37,6 +37,5 @@ class ProductRequest extends FormRequest
             'image' => ['required', 'string'],
         ];
     }
-
     
 }
