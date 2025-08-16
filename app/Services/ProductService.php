@@ -12,4 +12,6 @@ interface ProductService{
     public function updateProduct(array $data, int $id);
 
     public function createProduct(array $data);
+
+    public function searchProduct(string $keyword);
 }

@@ -21,7 +21,8 @@ class ProductFactory extends Factory
             'description' => $this->faker->paragraph(),
             'price' => $this->faker->randomFloat(2, 50, 500), // ₱50.00 - ₱500.00
             'stock' => $this->faker->numberBetween(0, 100),
-            'image' => $this->faker->imageUrl(640, 480, 'product', true), // Fake product image
+            'sold' => $this->faker->numberBetween(0, 100),
+            'image' => 'https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg?auto=compress&cs=tinysrgb&w=800', // Fake product image
         ];
     }
 }

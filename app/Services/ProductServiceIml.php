@@ -32,4 +32,10 @@ class ProductServiceIml implements ProductService{
 
         return $product;
     }
+
+    public function searchProduct(string $keyword){
+        $products = Product::where('name', 'like', "%{$keyword}%")->get();
+
+        return $products;
+    }
 }

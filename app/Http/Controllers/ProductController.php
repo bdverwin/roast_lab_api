@@ -38,4 +38,14 @@ class ProductController extends Controller
 
         return response()->json(['data' => $product]);
     }
+
+    public function searchProduct(Request $request){
+        $keyword = $request->query('keyword');
+        if($keyword == null){
+            return $this->getAllProducts();
+        }
+        $products = $this->productService->searchProduct($keyword);
+
+        return response()->json(['data' => $products]);
+    }
 }
