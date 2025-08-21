@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Models\Review;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -23,5 +24,6 @@ class DatabaseSeeder extends Seeder
         UserInfo::factory()->create();
         
         $this->call(ProductSeeder::class);
+        Review::factory(10)->create();
     }
 }

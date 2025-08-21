@@ -8,7 +8,8 @@ class ProductServiceIml implements ProductService{
 
 
     public function getProduct(int $id){
-        $data = Product::findOrFail($id);
+        // $data = Product::with('reviews')->findOrFail($id);
+        $data = Product::with(['reviews.user:id,email'])->findOrFail($id);
 
         return $data;
     }
