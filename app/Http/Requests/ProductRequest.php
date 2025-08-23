@@ -24,6 +24,7 @@ class ProductRequest extends FormRequest
         $routeName = $this->route()->getName();
         return match($routeName){
             'product.update', 'product.create' => $this->getProductRules(),
+            'cart.add' => $this->getCartRules(),
             default => [],
         };
     }
@@ -35,6 +36,16 @@ class ProductRequest extends FormRequest
             'price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
             'stock' => ['required', 'integer'],
             'image' => ['required', 'string'],
+        ];
+    }
+
+    public function getCartRules(){
+        return [
+            'user_id' => ['required', 'integer'],
+            'product_id' => ['required', 'integer'],
+            'quantity' => ['required', 'integer'],
+            'price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'subtotal' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
         ];
     }
     

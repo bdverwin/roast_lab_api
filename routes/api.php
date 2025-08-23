@@ -16,4 +16,6 @@ Route::middleware('auth:sanctum')->prefix('/v1/product')->group(function(){
     Route::post('/update/{id}', [ProductController::class, 'updateProduct'])->name('product.update');
     Route::post('/create', [ProductController::class, 'createProduct'])->name('product.create');
     Route::get('/search', [ProductController::class, 'searchProduct'])->name('product.search');
+    Route::post('/cart/add', [ProductController::class, 'addToCart'])->name('cart.add');
+    Route::get('/cart/{id}', [ProductController::class, 'getCart'])->name('cart.get');
 });

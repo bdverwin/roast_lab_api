@@ -14,4 +14,8 @@ interface ProductService{
     public function createProduct(array $data);
 
     public function searchProduct(string $keyword);
+
+    public function addToCart(array $data);
+
+    public function getCart(int $id);
 }

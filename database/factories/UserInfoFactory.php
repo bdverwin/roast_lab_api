@@ -17,13 +17,14 @@ class UserInfoFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
-            'first_name' => 'Benhur',
-            'last_name' => 'Verwin',
-            'gender' => 'male',
-            'address' => 'Rizal',
-            'birth_date' => '2000-10-16',
-            'contact_num' => '09774993841'
+            'user_id' => \App\Models\User::factory(), // ✅ create user on the fly
+            'first_name' => $this->faker->firstName(),
+            'last_name'  => $this->faker->lastName(),
+            'gender'     => $this->faker->randomElement(['male', 'female']),
+            'address'    => $this->faker->city(),
+            'birth_date' => $this->faker->date(),
+            'contact_num'=> $this->faker->phoneNumber(),
         ];
+
     }
 }

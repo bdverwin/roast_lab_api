@@ -25,6 +25,7 @@ class UserFactory extends Factory
     {
         return [
             'email' => fake()->unique()->safeEmail(),
+            'is_admin' => $this->faker->numberBetween(1, 5),
             'email_verified_at' => now(),
             'password' => bcrypt('test123'),
             'remember_token' => Str::random(10),

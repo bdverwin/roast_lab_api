@@ -17,13 +17,38 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        $user1 = User::factory()->create([
             'email' => 'binverwin16@gmail.com',
+            'is_admin' => 1,
         ]);
 
-        UserInfo::factory()->create();
+        UserInfo::factory()->create([
+            'user_id' => $user1->id,
+            'first_name' => 'Benhur',
+            'last_name'  => 'Verwin',
+            'gender'     => 'Male',
+            'address'    => 'Rizal',
+            'birth_date' => '2001-10-16',
+            'contact_num'=> '09774223122',
+        ]);
+
+        $user2 = User::factory()->create([
+            'email' => 'john@test.com',
+            'is_admin' => 0,
+        ]);
+
+        UserInfo::factory()->create([
+            'user_id' => $user2->id,
+            'first_name' => 'John',
+            'last_name'  => 'Doe',
+            'gender'     => 'Male',
+            'address'    => 'United States',
+            'birth_date' => '2000-10-16',
+            'contact_num'=> '09774223122',
+        ]);
         
         $this->call(ProductSeeder::class);
+
         Review::factory(10)->create();
     }
 }

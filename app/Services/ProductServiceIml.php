@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Cart;
 use App\Models\Product;
 
 class ProductServiceIml implements ProductService{
@@ -38,5 +39,17 @@ class ProductServiceIml implements ProductService{
         $products = Product::where('name', 'like', "%{$keyword}%")->get();
 
         return $products;
+    }
+
+    public function addToCart(array $data){
+        $cart = Cart::create($data);
+
+        return $cart;
+    }
+
+    public function getCart(int $id){
+        $cart = Cart::where('user_id', '=', $id)->get();
+
+        return $cart;
     }
 }

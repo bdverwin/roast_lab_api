@@ -48,4 +48,16 @@ class ProductController extends Controller
 
         return response()->json(['data' => $products]);
     }
+
+    public function addToCart(ProductRequest $request){
+        $cart = $this->productService->addToCart($request->validated());
+
+        return response()->json(['data' => $cart]);
+    }
+
+    public function getCart($id){
+        $cart = $this->productService->getCart($id);
+
+        return response()->json(['data' => $cart]);
+    }
 }
