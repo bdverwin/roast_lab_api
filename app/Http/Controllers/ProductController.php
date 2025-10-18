@@ -60,4 +60,10 @@ class ProductController extends Controller
 
         return response()->json(['data' => $cart]);
     }
+
+    public function updateCart(Request $request){
+        $cart = $this->productService->updateCart($request->all());
+
+        return response()->json(['data' => $cart]);
+    }
 }

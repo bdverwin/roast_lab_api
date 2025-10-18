@@ -21,14 +21,14 @@ class Cart extends Model
         'subtotal',
     ];
 
-    public function products(): HasMany
+    public function products()
    {
-       return $this->hasMany(Product::class);
+       return $this->belongsTo(Product::class, 'product_id');
    }
 
-   public function users(): HasMany
+   public function users()
    {
-       return $this->hasMany(User::class);
+       return $this->belongsTo(User::class, 'user_id');
    }
 
 }

@@ -18,4 +18,6 @@ interface ProductService{
     public function addToCart(array $data);
 
     public function getCart(int $id);
+
+    public function updateCart(array $data);
 }
